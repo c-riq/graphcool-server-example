@@ -10,9 +10,16 @@ export const Home = {
   },
   perNight: {
     fragment: `fragment NumRatings on Place { id }`,
-   	resolve: async ({ id }, args, ctx: Context, info) => {
+     resolve: async ({ id }, args, ctx: Context, info) => {
       const place = await ctx.db.query.place({ where: { id } },`{ pricing { perNight } }`)
       return place.pricing.perNight
     },
-},
+  },
+  location: {
+    fragment: `fragment NumRatings on Place { id }`,
+     resolve: async ({ id }, args, ctx: Context, info) => {
+      const place = await ctx.db.query.place({ where: { id } },`{ location { lat lng } }`)
+      return place.location
+    },
+  },
 }

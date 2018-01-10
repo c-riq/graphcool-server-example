@@ -27,6 +27,12 @@ export const Query = {
     )
   },
 
+  autoCompleteCity: async (parent, args, ctx: Context, info) => {
+    return ctx.db.query.cities({where:{ name_contains: args.searchString }},
+      info,
+    )
+  },
+
   experiencesByCity: async (parent, { cities }, ctx: Context, info) => {
     return ctx.db.query.cities({
       where: {

@@ -11,6 +11,7 @@ type Query {
   featuredDestinations: [Neighbourhood!]!
   experiencesByCity(cities: [String!]!): [ExperiencesByCity!]!
   viewer: Viewer
+  autoCompleteCity(searchString: String!): [City!]!
 }
 
 type Mutation {
@@ -71,6 +72,8 @@ type Home {
   avgRating: Float!
   pictures(first: Int): [Picture!]!
   perNight: Int!
+  location: Location!
+  neighbourhood: Neighbourhood!
 }
 
 type Reservation {
